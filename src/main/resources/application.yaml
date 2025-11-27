@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: p-bank
+
+  config:
+    import:
+      - optional:file:.env[.properties]
+
+  datasource:
+    url: ${LOCAL_DB_URL}
+    driver-class-name: org.postgresql.Driver
+    username: ${LOCAL_DB_USERNAME}
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        format_sql: true
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+
+logging:
+  level:
+    org.hibernate.SQL: DEBUG
+    org.hibernate.type.descriptor.sql.BasicBinder: TRACE
+
+server:
+  port: ${PORT}
+
+  servlet:
+    context-path: /p-bank
